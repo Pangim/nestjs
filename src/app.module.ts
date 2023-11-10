@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { JwtModule } from "@nestjs/jwt";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 import { AppController } from "./app.controller";
@@ -25,6 +26,12 @@ import { ENTITIES, MODULES } from "./config/config";
       entities: ENTITIES,
       charset: "utf8mb4",
     }),
+    {
+      ...JwtModule.register({
+        secret: process.env.ACCESS_TOKEN_SECRET_KEY,
+      }),
+      global: true,
+    },
     ...MODULES,
   ],
   controllers: [AppController],
