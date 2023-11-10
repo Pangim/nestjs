@@ -10,7 +10,7 @@ import { ENTITIES, MODULES } from "./config/config";
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 전체적으로 사용하기 위해
-      envFilePath: ".env",
+      envFilePath: process.env.IS_DEVELOP === "develop" ? ".env" : ".env",
     }),
     TypeOrmModule.forRoot({
       type: "mysql",
