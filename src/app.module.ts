@@ -3,8 +3,6 @@ import { ConfigModule } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 import { ENTITIES, MODULES } from "./config/config";
 
 @Module({
@@ -34,7 +32,7 @@ import { ENTITIES, MODULES } from "./config/config";
     },
     ...MODULES,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

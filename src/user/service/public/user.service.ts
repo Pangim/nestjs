@@ -10,13 +10,13 @@ import { Connection, Repository } from "typeorm";
 import {
   CreateUserInputDto,
   CreateUserOutputDto,
-} from "../dto/create-user.dto";
-import { UserStatus } from "../entities/user-status.entity";
-import { User } from "../entities/user.entity";
-import { UserError, USER_ERROR } from "../error/user.error";
+} from "../../dto/public/create-user.dto";
+import { UserStatus } from "../../entities/user-status.entity";
+import { User } from "../../entities/user.entity";
+import { UserError, USER_ERROR } from "../../error/user.error";
 
 @Injectable()
-export class User_UserService {
+export class Public_UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,

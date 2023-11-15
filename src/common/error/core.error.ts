@@ -1,4 +1,4 @@
-export class CommonError {
+export class CoreError {
   protected api: string;
   protected errorHandle: Object;
   protected status: number;

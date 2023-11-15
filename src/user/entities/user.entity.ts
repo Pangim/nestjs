@@ -1,6 +1,7 @@
 import { IsEmail, IsEnum, IsString, Matches } from "class-validator";
 import { CommonEntity } from "src/common/common.entity";
-import { Column, Entity, JoinColumn, OneToMany } from "typeorm";
+import { PermissionRole } from "src/common/enum/common.enum";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { GenderType } from "../enum/user.enum";
 import { UserStatus } from "./user-status.entity";
 
@@ -18,6 +19,10 @@ export class User extends CommonEntity {
   @IsEnum(GenderType)
   gender: GenderType;
 
+  @Column({ enum: PermissionRole, default: PermissionRole.USER })
+  @IsEnum(PermissionRole)
+  role: PermissionRole;
+
   @Column()
   @IsString()
   @Matches(
@@ -25,7 +30,6 @@ export class User extends CommonEntity {
   )
   password: string;
 
-  @OneToMany(() => UserStatus, (UserStatus) => UserStatus.user)
-  @JoinColumn()
-  UserStatus: UserStatus;
+  @OneToOne(() => UserStatus, (UserStatus) => UserStatus.user)
+  userStatus: UserStatus;
 }

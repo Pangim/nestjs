@@ -1,4 +1,4 @@
-import { CommonError } from "src/common/error/core.error";
+import { CoreError } from "src/common/error/core.error";
 
 export const USER_ERROR = {
   USER_NOT_FOUND: "userNotFound",
@@ -6,7 +6,7 @@ export const USER_ERROR = {
   DUPLICATED_NICKNAME: "duplicatedNickname",
 };
 
-export class UserError extends CommonError {
+export class UserError extends CoreError {
   constructor() {
     super();
     this.errorHandle = {
