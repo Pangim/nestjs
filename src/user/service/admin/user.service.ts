@@ -67,8 +67,6 @@ export class Admin_UserService {
         .andWhere("u.role = :role", { role: PermissionRole.USER })
         .getRawOne();
 
-      console.log(repoUser, queryBuilderUser, queryBuilderRawUser);
-
       if (!repoUser || !queryBuilderUser || !queryBuilderRawUser) {
         throw new NotFoundException(USER_ERROR.USER_NOT_FOUND);
       }
